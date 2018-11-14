@@ -1,6 +1,6 @@
-﻿#include<iostream>
-#include<array>
-#include<vector>
+﻿#include <iostream>
+#include <array>
+#include <vector>
 
 int bit_xor(int x, int y);
 
@@ -16,7 +16,7 @@ int main()
 
 	//print out initial value + add to si
 	std::cout << '[';
-	for (int i = 0; i <= 7; i++)
+	for (int i = 0; i < 8; i++)
 		std::cout << initial_values[i];
 	std::cout << "] " << seq_counter++ << std::endl;
 	si.push_back(initial_values[7]);
@@ -31,13 +31,13 @@ int main()
 
 		std::cout << '[' << result[0];
 		//shift the bits
-		for(int i = 1; i <= 7; i++)
+		for(int i = 1; i < 8; i++)
 		{
 			result[i] = temp[i - 1];
 			std::cout << result[i];
 
 			//add to si
-			if (i == 7 && seq_counter < 89)
+			if (i == 7 && seq_counter < 88)
 				si.push_back(result[i]);
 
 		}
@@ -51,10 +51,14 @@ int main()
 	std::cout << std::endl << "Si binary: ";
 
 	for (int i = 0; i < si.size(); i++)
-		std::cout << si.at(i);
+	{
+		if ((i+1) % 8 == 0)
+			std::cout << si.at(i) << ' ';
+		else
+			std::cout << si.at(i);
+	}
 
-	int a;
-	std::cin >> a;
+	std::cin.ignore();
 }
 
 
